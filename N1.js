@@ -27,35 +27,31 @@ const array = [
     {numAtomico:67,elemento:"Ho"},{numAtomico:68,elemento:"Er"},{numAtomico:69,elemento:"Tm"},{numAtomico:70,elemento:"Yb"},
     {numAtomico:89,elemento:"Ac"},{numAtomico:90,elemento:"Th"},{numAtomico:91,elemento:"Pa"},{numAtomico:92,elemento:"U"},
     {numAtomico:93,elemento:"Np"},{numAtomico:94,elemento:"Pu"},{numAtomico:95,elemento:"Am"},{numAtomico:96,elemento:"Cm"},
-    {numAtomico:97,elemento:"Bk"},{numAtomico:98,elemento:"Cf"},{numAtomico:99,elemento:"Es"},{numAtomico:100,elemento:"Fm"},
+    {numAtomico:97,elemento:"Bk"},{numAtomico:98,elemento:"Cf"},{numAtomico:99,elemento:"Es"},{numAtomico:100,elemento:"Fm"}]
 
     // elementos aleatorios
 
-const shuffleArray = array => {
-    for (let i=array.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array [i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
-// ordena de menor a mayor. Solo valido para valor numerico.
+ array.sort(() => Math.random()-0.5)
+array.length = 20
+    console.log("Elementos en orden aleatrio: ");
+    console.table(array)
 
-const  numatom_ordenado = array.sort((numa1,numa2) => {
-    return numa2.numAtomico - numa1.numAtomico
+// ordena de menor a mayor. Solo valido para valor numerico.
+const numatom_ordenado = array.sort((numa1,numa2) => {
+    return numa1.numAtomico - numa2.numAtomico
   
 })
-
-console.log(numatom_ordenado); 
+console.log("De forma ascendente los elementos de la tabla periódica son: ");
+console.table(numatom_ordenado); 
 
 
 //primo
-const primo= numAtomico => {
-    if (numAtomico == 0 || numAtomico == 1 || numAtomico == 4) return false;
-    for (let x = 2; x < numAtomico / 2; x ++){
-        if (numAtomico % x == 0) return false;
+function isPrime(numAtomico) {
+    for (let i=2, s=Math.sqrt(numAtomico); i<=s; i++){
+        if(numAtomico%i===0) return false;
     }
-    return true;
+    return numAtomico>1;
 }
 
+console.log ("Los elementos con numero atómico primo son:  ")
+console.table(isPrime);
